@@ -1,8 +1,7 @@
 export { notes as theme } from '@mdx-deck/themes'
 import { Notes, Image } from 'mdx-deck'
-import GraphiQL from 'graphiql'
-import { graphQLFetcher } from './componentns/graphiql.js'
-import 'node_modules/graphiql/graphiql.css'
+import GraphiqlComponent from './componentns/GraphiqlComponent.js'
+import { graphQLFetcher } from './helpers/graphiql.js'
 
 # What is GraphQL?
 
@@ -95,4 +94,4 @@ Easiest way to use => [Chrome Extension](https://chrome.google.com/webstore/deta
 
 ---
 
-<GraphiQL fetcher={graphQLFetcher} />
+<GraphiqlComponent />

@@ -11,10 +11,6 @@ module.exports = {
                 test: /\.js/, // assuming the files are named .js.flow
                 enforce: 'pre',
                 use: ['remove-flow-types-loader']
-            },
-            {
-                test: /\.css$/,
-                use: [{ loader: 'style-loader' }, { loader: 'css-loader' }]
             }
         ]
     },
