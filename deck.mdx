@@ -1,7 +1,8 @@
-export { notes as theme } from '@mdx-deck/themes'
 import { Notes, Image } from 'mdx-deck'
+
 import GraphiqlComponent from './componentns/GraphiqlComponent.js'
-import { graphQLFetcher } from './helpers/graphiql.js'
+
+export { default as theme } from './theme'
 
 # What is GraphQL?
 
@@ -73,6 +74,34 @@ As you can see in the example above, GraphQL queries look very neat and easy to 
     that autocomplete your GraphQL queries and even do "codegen". We'll
     understand this in more detail later!
 </Notes>
+
+---
+
+# Fetching
+
+-   Fields
+-   Arguments
+-   Operation name
+-   Variables
+
+```
+ query HeroNameAndFriends($episode: Episode) {
+  hero(episode: $episode) {
+    name
+    friends {
+      name
+    }
+  }
+}
+```
+
+---
+
+# Mutation
+
+---
+
+# Subscription
 
 ---
 
