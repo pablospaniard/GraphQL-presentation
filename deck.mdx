@@ -1,0 +1,92 @@
+export { notes as theme } from '@mdx-deck/themes'
+import { Notes, Image } from 'mdx-deck'
+import GraphiQL from 'graphiql'
+import { graphQLFetcher } from './componentns/graphiql.js'
+
+# What is GraphQL?
+
+<Notes>http://apis.guru/graphql-apis/</Notes>
+
+---
+
+### GraphQL is a query language for your API
+
+<Notes>
+    It's typically used over HTTP where the key idea is to `POST` a "query" to
+    an HTTP endpoint, instead of hitting different HTTP endpoints for different
+    resources. GraphQL is designed for developers of web/mobile apps (HTTP
+    clients) to be able to make API calls to fetch the data they need from their
+    backend APIs conveniently.
+</Notes>
+
+---
+
+# Thinking in GraphQL
+
+-   single URL endpoint
+-   Instead of 'GET'ing a resource you 'POST' a query that describes what data you want.
+
+<Notes>
+We're changing the way we think about API calls. Instead of making different API calls to different URLs to fetch data, we're making queries to a "single URL endpoint" that returns data based on the query.
+
+Instead of 'GET'ing a resource you 'POST' a query that describes what data you want.
+You think of the data your API returns as a "graph", this allows you to make queries to fetch "related" pieces of data in a single shot. In the example above, you fetch the user and the user's address (as a nested JSON object) in the same API call, as opposed to making 2 API calls.
+The "query" you send as data in the POST request has a structure and a syntax. This "language" is called GraphQL.
+As you can see in the example above, GraphQL queries look very neat and easy to read! This is because the query is the "shape" of the final JSON data you desire. This is one of the key-reasons that makes GraphQL a joy to work with!
+
+</Notes>
+
+---
+
+<Image src="./img/first.jpg" size="width: 100%" />
+
+---
+
+# GraphQL benefits
+
+-   Avoid over-fetching.
+    <Notes>
+        You avoid fetching more data than you need because you can specify the
+        exact fields you need.
+    </Notes>
+-   Prevent multiple API calls.
+    <Notes>
+        In case you need more data, you can also avoid making multiple calls to
+        your API. In the case above, you don't need to make 2 API calls to fetch
+        user and address separately.
+    </Notes>
+-   Lesser communication with API developers.
+    <Notes>
+        Sometimes to fetch the exact data you need, especially if you need to
+        fetch more data and want to avoid multiple API calls, you will need to
+        ask your API developers to build a new API. With GraphQL, your work is
+        independent of the API team! This allows you to work faster on your app.
+    </Notes>
+-   Self-documenting.
+    <Notes>
+        Every GraphQL API conforms to a "schema" which is the graph data model
+        and what kinds of queries a client can make. This allows the community
+        to build lots of cool tools to explore & visualise your API or create
+        IDE plugins that autocomplete your GraphQL queries and even do
+        "codegen". We'll understand this in more detail later!
+    </Notes>
+
+---
+
+# GraphiQL
+
+_A graphical interactive in-browser GraphQL IDE_ => [GraphiQL](https://github.com/graphql/graphiql)
+
+### Features
+
+-   Syntax highlighting
+-   Intelligent type ahead of fields, arguments, types, and more.
+-   Real-time error highlighting and reporting.
+-   Automatic query completion.
+-   Run and inspect query results.
+
+Easiest way to use => [Chrome Extension](https://chrome.google.com/webstore/detail/chromeiql/fkkiamalmpiidkljmicmjfbieiclmeij)
+
+---
+
+<GraphiQL fetcher={graphQLFetcher} />
