@@ -2,8 +2,6 @@ module.exports = {
     // ...
     module: {
         rules: [
-            // or "loaders" for webpack 1.x
-            { test: /\.graphql?$/, loader: 'webpack-graphql-loader' },
             {
                 test: /\.mjs$/,
                 include: /node_modules/,
@@ -13,10 +11,14 @@ module.exports = {
                 test: /\.js/, // assuming the files are named .js.flow
                 enforce: 'pre',
                 use: ['remove-flow-types-loader']
+            },
+            {
+                test: /\.css$/,
+                use: [{ loader: 'style-loader' }, { loader: 'css-loader' }]
             }
         ]
     },
     resolve: {
-        extensions: ['.webpack.js', '.web.js', '.mjs', '.js', '.json']
+        extensions: ['.webpack.js', '.web.js', '.mjs', '.js', '.json', '.mdx']
     }
 }

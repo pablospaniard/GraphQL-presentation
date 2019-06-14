@@ -2,6 +2,7 @@ export { notes as theme } from '@mdx-deck/themes'
 import { Notes, Image } from 'mdx-deck'
 import GraphiQL from 'graphiql'
 import { graphQLFetcher } from './componentns/graphiql.js'
+import 'node_modules/graphiql/graphiql.css'
 
 # What is GraphQL?
 
@@ -24,7 +25,7 @@ import { graphQLFetcher } from './componentns/graphiql.js'
 # Thinking in GraphQL
 
 -   single URL endpoint
--   Instead of 'GET'ing a resource you 'POST' a query that describes what data you want.
+-   Instead of 'GET'
 
 <Notes>
 We're changing the way we think about API calls. Instead of making different API calls to different URLs to fetch data, we're making queries to a "single URL endpoint" that returns data based on the query.
@@ -38,44 +39,49 @@ As you can see in the example above, GraphQL queries look very neat and easy to 
 
 ---
 
-<Image src="./img/first.jpg" size="width: 100%" />
-
----
-
 # GraphQL benefits
 
 -   Avoid over-fetching.
-    <Notes>
-        You avoid fetching more data than you need because you can specify the
-        exact fields you need.
-    </Notes>
+
+<Notes>
+    You avoid fetching more data than you need because you can specify the exact
+    fields you need.
+</Notes>
+
 -   Prevent multiple API calls.
-    <Notes>
-        In case you need more data, you can also avoid making multiple calls to
-        your API. In the case above, you don't need to make 2 API calls to fetch
-        user and address separately.
-    </Notes>
+
+<Notes>
+    In case you need more data, you can also avoid making multiple calls to your
+    API. In the case above, you don't need to make 2 API calls to fetch user and
+    address separately.
+</Notes>
+
 -   Lesser communication with API developers.
-    <Notes>
-        Sometimes to fetch the exact data you need, especially if you need to
-        fetch more data and want to avoid multiple API calls, you will need to
-        ask your API developers to build a new API. With GraphQL, your work is
-        independent of the API team! This allows you to work faster on your app.
-    </Notes>
+
+<Notes>
+    Sometimes to fetch the exact data you need, especially if you need to fetch
+    more data and want to avoid multiple API calls, you will need to ask your
+    API developers to build a new API. With GraphQL, your work is independent of
+    the API team! This allows you to work faster on your app.
+</Notes>
+
 -   Self-documenting.
-    <Notes>
-        Every GraphQL API conforms to a "schema" which is the graph data model
-        and what kinds of queries a client can make. This allows the community
-        to build lots of cool tools to explore & visualise your API or create
-        IDE plugins that autocomplete your GraphQL queries and even do
-        "codegen". We'll understand this in more detail later!
-    </Notes>
+
+<Notes>
+    Every GraphQL API conforms to a "schema" which is the graph data model and
+    what kinds of queries a client can make. This allows the community to build
+    lots of cool tools to explore &amp; visualise your API or create IDE plugins
+    that autocomplete your GraphQL queries and even do "codegen". We'll
+    understand this in more detail later!
+</Notes>
 
 ---
 
 # GraphiQL
 
 _A graphical interactive in-browser GraphQL IDE_ => [GraphiQL](https://github.com/graphql/graphiql)
+
+---
 
 ### Features
 
