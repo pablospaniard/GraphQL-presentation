@@ -6,14 +6,20 @@
   "author": "Pavel Ivanov",
   "license": "MIT",
   "dependencies": {
+    "codemirror": "^5.47.0",
     "graphiql": "^0.13.0",
     "graphql": "^14.3.1",
     "mdx-deck": "^2.3.2",
     "react": "^16.8.6",
+    "react-codemirror2": "^6.0.0",
     "react-dom": "^16.8.6",
     "remove-flow-types-loader": "^1.1.0"
   },
   "scripts": {
-    "start": "mdx-deck deck.mdx"
+    "start": "mdx-deck deck.mdx -p 1234 "
+  },
+  "devDependencies": {
+    "css-loader": "^3.0.0",
+    "style-loader": "^0.23.1"
   }
 }

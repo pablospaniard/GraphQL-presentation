@@ -1,6 +1,7 @@
+import './script.js'
 import { Notes, Image } from 'mdx-deck'
 
-import GraphiqlComponent from './componentns/GraphiqlComponent.js'
+import { GraphiqlComponent, CodeBlock } from './componentns'
 
 export { default as theme } from './theme'
 
@@ -84,16 +85,7 @@ As you can see in the example above, GraphQL queries look very neat and easy to 
 -   Operation name
 -   Variables
 
-```
- query HeroNameAndFriends($episode: Episode) {
-  hero(episode: $episode) {
-    name
-    friends {
-      name
-    }
-  }
-}
-```
+<CodeBlock style={{ fontSize: 30 }} code={`console.log('hello!')`} />
 
 ---
 
