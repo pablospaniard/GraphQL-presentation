@@ -84,23 +84,6 @@ export const getNMR = async (cacheToken, timeFrame, range, offset, limit) => {
   return data
 }
 
-
-
-
-export const getAccountManagers = async () => {
-  const query = `query accountManagerstQuery {
-    accountManagers {
-      id
-      name
-  }
-  }`
-  const { data, errors } = await graphQLRequest(query)
-
-  errorHandler(errors)
-
-  return data
-}
-
 export const toggleNegativeMargin = async (
   customerId,
   mccmnc,
