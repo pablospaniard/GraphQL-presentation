@@ -2,6 +2,7 @@ import './script.js'
 import { Notes, Image } from 'mdx-deck'
 
 import { GraphiqlComponent, CodeBlock } from './componentns'
+import { fetch } from './snippets/operations.js'
 
 export { default as theme } from './theme'
 
@@ -78,22 +79,34 @@ As you can see in the example above, GraphQL queries look very neat and easy to 
 
 ---
 
-# Fetching
+# Queries
 
 -   Fields
 -   Arguments
--   Operation name
 -   Variables
+-   Operation name
 
-<CodeBlock style={{ fontSize: 30 }} code={`console.log('hello!')`} />
+<CodeBlock style={{ fontSize: 30 }} code={fetch} />
 
 ---
 
 # Mutation
 
+There's one important distinction between queries and mutations, other than the _name_:
+
+While query fields are executed in parallel, mutation fields **run in series**, one after the other.
+
+<Notes>
+    This means that if we send two incrementCredits mutations in one request, the first is guaranteed to finish before the second begins, ensuring that we don't end up with a race condition with ourselves.
+</Notes>
+
 ---
 
 # Subscription
+
+A GraphQL subscription is a subscription query string sent to a websocket endpoint. 
+
+And whenever data changes on the backend, new data is pushed over websockets from the server to the client.
 
 ---
 
@@ -115,4 +128,24 @@ Easiest way to use => [Chrome Extension](https://chrome.google.com/webstore/deta
 
 ---
 
+# Demo
+
+---
+
 <GraphiqlComponent />
+
+---
+
+# Best Practices
+
+-   Serving over HTTP
+-   Autorization
+-   Pagination
+-   Caching
+
+---
+
+# Q&A
+
+
+
