@@ -4,15 +4,18 @@ import { Notes, Image, Appear } from 'mdx-deck'
 import { GraphiqlComponent, CodeBlock } from './componentns'
 import { fetch } from './snippets/operations.js'
 
+import code from '!!raw-loader!./snippets/example.js';
+
 export { default as theme } from './theme'
 
-# What is GraphQL? :scream:
+
+# What is GraphQL :question:
 
 <Notes>http://apis.guru/graphql-apis/</Notes>
 
 ---
 
-### GraphQL is a query language for your API
+## GraphQL is a query language for your API
 
 <Notes>
     It's typically used over HTTP where the key idea is to `POST` a "query" to
@@ -29,7 +32,7 @@ export { default as theme } from './theme'
 
 ---
 
-# GraphQL benefits
+## GraphQL benefits
 
 <Appear>
 
@@ -70,7 +73,17 @@ export { default as theme } from './theme'
 
 ---
 
-# Queries
+### Front end part :speedboat:
+
+-   Queries
+
+-   Mutations
+
+-   Subscriptions
+
+---
+
+## Queries
 
 -   Fields
 -   Arguments
@@ -81,7 +94,7 @@ export { default as theme } from './theme'
 
 ---
 
-# Mutation
+## Mutation
 
 There's one important distinction between queries and mutations, other than the _name_:
 
@@ -93,21 +106,20 @@ While query fields are executed in parallel, mutation fields **run in series**, 
 
 ---
 
-# Subscription
+## Example
 
-A GraphQL subscription is a subscription query string sent to a websocket endpoint. 
-
-And whenever data changes on the backend, new data is pushed over websockets from the server to the client.
+<CodeBlock style={{ fontSize: 20, width: '39vw' }} code={code} />
 
 ---
 
-# GraphiQL
+
+## GraphiQL
 
 _A graphical interactive in-browser GraphQL IDE_ => [GraphiQL](https://github.com/graphql/graphiql)
 
 ---
 
-### Features
+## Features
 
 <Appear>
 
@@ -132,7 +144,15 @@ Easiest way to use => [Chrome Extension](https://chrome.google.com/webstore/deta
 
 ---
 
-# Demo
+### Back end part :rowboat:
+
+-   Shema
+
+-   Resolvers
+
+---
+
+## Demo
 
 ---
 
@@ -140,35 +160,17 @@ Easiest way to use => [Chrome Extension](https://chrome.google.com/webstore/deta
 
 ---
 
-# Best Practices
 
-<Appear>
-
--   Serving over HTTP
- 
-
--   Autorization
+## Q&A
 
 
--   Pagination
-
-
--   Caching
-
-</Appear>
-
----
-
-# Q&A
-
-
-:es: :ru: :us:
 
 ###### _github_: [github.com/redstardeveloper](https://github.com/redstardeveloper)
 
-_twitter_: [twitter.com/pablo_spaniard](https://twitter.com/pablo_spaniard)
+###### _twitter_: [twitter.com/pablo_spaniard](https://twitter.com/pablo_spaniard)
 
-_linkedin_: [linkedin.com/pablospaniard/](https://www.linkedin.com/in/pablospaniard/)
+###### _linkedin_: [linkedin.com/pablospaniard/](https://www.linkedin.com/in/pablospaniard/)
 
+:es: :ru: :us:
 
 

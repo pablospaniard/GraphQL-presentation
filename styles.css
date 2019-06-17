@@ -16,7 +16,7 @@
 }
 
 .CodeMirror {
-    height: unset;
+    height: 70vh !important;
     margin-bottom: 18px;
     padding: 14px;
 }
