@@ -1,108 +1,114 @@
 // axios request
 export const graphQLRequest = async (query, variables = {}) => {
-  const response = await axios({
-    url: '/graphql',
-    method: 'post',
-    data: {
-      query,
-      variables
-    }
-  })
-    .then(res => {
-      return res
+    const response = await axios({
+        url: '/graphql',
+        method: 'post',
+        data: {
+            query,
+            variables
+        }
     })
-    .catch(() => {
-      throw new Error(
-        'Something went wrong in graphQLRequest, check your request'
-      )
-    })
+        .then(res => {
+            return res // {data:{...}}
+        })
+        .catch(() => {
+            throw new Error('Error')
+        })
 
-  return response.data
+    return response.data
 }
 
 // base query
 export const baseQuery = `{
-    items {
-        customer{
-        id
-        name
-        company
-        businessType
-      }
-      accountManager{
-        id
-        name
-      }
-      gateway{
-        id
-      }
-      mccmnc{
-        value
-        operator
-      }
-      purchaseRateSmsPerUnit
-      purchaseRateLookupPerUnit
-      salesRatePerUnit
-      margin
-      volume
-      isVisible
-      routingCollection{
-        id
-        name
-      }
+  items {
+      customer{
+      id
+      name
+      company
+      businessType
     }
-    pageInfo {
-      cacheToken
-      hasNextPage
+    accountManager{
+      id
+      name
     }
-  }`
+    gateway{
+      id
+    }
+    mccmnc{
+      value
+      operator
+    }
+    purchaseRateSmsPerUnit
+    purchaseRateLookupPerUnit
+    salesRatePerUnit
+    margin
+    volume
+    isVisible
+    routingCollection{
+      id
+      name
+    }
+  }
+  pageInfo {
+    cacheToken
+    hasNextPage
+  }
+}`
 
 // error handling
 export const errorHandler = errors => {
-  if (errors) {
-    throw new Error(errors.map(error => error.message).join('\n'))
-  }
+    if (errors) {
+        throw new Error(errors.map(error => error.message).join('\n'))
+    }
 }
 
 // handlers
-export const getNMR = async (cacheToken, timeFrame, range, offset, limit) => {
-  const query = `query negativeMarginReportQuery($cacheToken: String, $timeFrame: Int!, $shouldShowHidden: Boolean, $offset: Int, $limit: Int, $marginTotalGe: Float, $marginTotalLe: Float ) {
-    negativeMarginReport(cacheToken: $cacheToken, timeFrame: $timeFrame, shouldShowHidden: $shouldShowHidden, offset: $offset, limit: $limit, marginTotalGe: $marginTotalGe, marginTotalLe: $marginTotalLe ) ${baseQuery}
+export const getNMR = async (cacheToken, timeFrame) => {
+    const query = `query negativeMarginReportQuery($cacheToken: String, $timeFrame: Int! ) {
+    negativeMarginReport(cacheToken: $cacheToken, timeFrame: $timeFrame) ${baseQuery}
   }`
-  const { data, errors } = await graphQLRequest(query, {
-    cacheToken,
-    timeFrame,
-    shouldShowHidden: true,
-    offset,
-    limit,
-    marginTotalLe: range.le,
-    marginTotalGe: range.ge
-  })
 
-  errorHandler(errors)
+    const { data, errors } = await graphQLRequest(query, {
+        cacheToken,
+        timeFrame
+    })
 
-  return data
+    errorHandler(errors)
+
+    return data
 }
 
-export const toggleNegativeMargin = async (
-  customerId,
-  mccmnc,
-  gatewayId,
-  routingProfileId
-) => {
-  const query = `mutation toggleNegativeMarginVisibilityMutation($customerId: ID!, $mccmnc: ID, $gatewayId: ID) {
-  toggleNegativeMarginVisibility (customerId: $customerId, mccmnc:$mccmnc, gatewayId: $gatewayId)
-}`
+export const toggleNegativeMargin = async (customerId, mccmnc) => {
+    const query = `mutation toggleNegativeMarginVisibilityMutation($customerId: ID!, $mccmnc: ID) {
+    toggleNegativeMarginVisibility (customerId: $customerId, mccmnc:$mccmnc)
+  }`
 
-  const { data, errors } = await graphQLRequest(query, {
-    customerId,
-    mccmnc,
-    gatewayId,
-    routingProfileId
-  })
+    const { data, errors } = await graphQLRequest(query, {
+        customerId,
+        mccmnc
+    })
 
-  errorHandler(errors)
+    errorHandler(errors)
 
-  return data
+    return data
 }
 
+export const fetchReport = async timeFrame => {
+    const request = (token = '') => {
+        getNMR(token, timeFrame)
+            .then(res => {
+                const { items, pageInfo } = res.negativeMarginReport
+                if (pageInfo.hasNextPage) {
+                    offset += limit
+                    // some logic here
+                    request(pageInfo.cacheToken)
+                } else {
+                    // other logic here
+                }
+            })
+            .catch(err => {
+                throw new Error(err)
+            })
+    }
+    request()
+}

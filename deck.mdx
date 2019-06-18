@@ -1,13 +1,12 @@
 import './script.js'
-import { Notes, Image, Appear } from 'mdx-deck'
+import { Notes, Image } from 'mdx-deck'
 
-import { GraphiqlComponent, CodeBlock } from './componentns'
+import { GraphiqlComponent, CodeBlock, List } from './components'
 import { fetch } from './snippets/operations.js'
 
-import code from '!!raw-loader!./snippets/example.js';
+import code from '!!raw-loader!./snippets/example.js'
 
 export { default as theme } from './theme'
-
 
 # What is GraphQL :question:
 
@@ -22,33 +21,26 @@ export { default as theme } from './theme'
     an HTTP endpoint, instead of hitting different HTTP endpoints for different
     resources. GraphQL is designed for developers of web/mobile apps (HTTP
     clients) to be able to make API calls to fetch the data they need from their
-    backend APIs conveniently.
-    We're changing the way we think about API calls. Instead of making different API calls to different URLs to fetch data, we're making queries to a "single URL endpoint" that returns data based on the query.
-    Instead of 'GET'ing a resource you 'POST' a query that describes what data you want.
-    You think of the data your API returns as a "graph", this allows you to make queries to fetch "related" pieces of data in a single shot. In the example above, you fetch the user and the user's address (as a nested JSON object) in the same API call, as opposed to making 2 API calls.
-    The "query" you send as data in the POST request has a structure and a syntax. This "language" is called GraphQL.
-    As you can see in the example above, GraphQL queries look very neat and easy to read! This is because the query is the "shape" of the final JSON data you desire. This is one of the key-reasons that makes GraphQL a joy to work with!
+    backend APIs conveniently. We're changing the way we think about API calls.
+    Instead of making different API calls to different URLs to fetch data, we're
+    making queries to a "single URL endpoint" that returns data based on the
+    query. Instead of 'GET'ing a resource you 'POST' a query that describes what
+    data you want. You think of the data your API returns as a "graph", this
+    allows you to make queries to fetch "related" pieces of data in a single
+    shot. In the example above, you fetch the user and the user's address (as a
+    nested JSON object) in the same API call, as opposed to making 2 API calls.
+    The "query" you send as data in the POST request has a structure and a
+    syntax. This "language" is called GraphQL. As you can see in the example
+    above, GraphQL queries look very neat and easy to read! This is because the
+    query is the "shape" of the final JSON data you desire. This is one of the
+    key-reasons that makes GraphQL a joy to work with!
 </Notes>
 
 ---
 
 ## GraphQL benefits
 
-<Appear>
-
--   Avoid over-fetching.
-
-
--   Prevent multiple API calls.
-
-
--   Lesser communication with API developers.
-
-
--   Self-documenting.
-
-
-</Appear>
+<List array={['Avoid over-fetching.', 'Prevent multiple API calls.', 'Lesser communication with API developers.', 'Self-documenting.']} />
 
 <Notes>
     You avoid fetching more data than you need because you can specify the exact
@@ -68,17 +60,15 @@ export { default as theme } from './theme'
     lots of cool tools to explore &amp; visualise your API or create IDE plugins
     that autocomplete your GraphQL queries and even do "codegen". We'll
     understand this in more detail later!
-</Notes>
 
+</Notes>
 
 ---
 
 ### Front end part :speedboat:
 
 -   Queries
-
 -   Mutations
-
 -   Subscriptions
 
 ---
@@ -99,23 +89,18 @@ There's one important distinction between queries and mutations, other than the 
 While query fields are executed in parallel, mutation fields **run in series**, one after the other.
 
 <Notes>
-    This means that if we send two incrementCredits mutations in one request, the first is guaranteed to finish before the second begins, ensuring that we don't end up with a race condition with ourselves.
+    This means that if we send two mutations in one request,
+    the first is guaranteed to finish before the second begins, ensuring that we
+    don't end up with a race condition with ourselves.
 </Notes>
 
 ---
 
 ## Example
 
-<CodeBlock style={{ fontSize: 20, width: '39vw' }} code={code} />
+<CodeBlock style={{ fontSize: 20, width: '80vw' }} code={code} />
 
 ---
-
-## Apolo Client
-
-**TODO** => find an example
-
----
-
 
 ## GraphiQL
 
@@ -125,24 +110,7 @@ _A graphical interactive in-browser GraphQL IDE_ => [GraphiQL](https://github.co
 
 ## Features
 
-<Appear>
-
--   Syntax highlighting
-
-
--   Intelligent type ahead of fields, arguments, types, and more.
-
-
--   Real-time error highlighting and reporting.
-
-
--   Automatic query completion.
-
-
--   Run and inspect query results.
-
-
-</Appear>
+<List array={['Syntax highlighting.', 'Intelligent type ahead of fields, arguments, types, and more.', 'Real-time error highlighting and reporting.', 'Automatic query completion.', 'Run and inspect query results.']} />
 
 Easiest way to use => [Chrome Extension](https://chrome.google.com/webstore/detail/chromeiql/fkkiamalmpiidkljmicmjfbieiclmeij)
 
@@ -164,17 +132,10 @@ Easiest way to use => [Chrome Extension](https://chrome.google.com/webstore/deta
 
 ---
 
-
-## Q&A
-
-
+# The End :checkered_flag:
 
 ###### _github_: [github.com/redstardeveloper](https://github.com/redstardeveloper)
 
 ###### _twitter_: [twitter.com/pablo_spaniard](https://twitter.com/pablo_spaniard)
 
 ###### _linkedin_: [linkedin.com/pablospaniard/](https://www.linkedin.com/in/pablospaniard/)
-
-:es: :ru: :us:
-
-
